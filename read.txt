@@ -1,0 +1,131 @@
+http://laravelacademy.org/post/153.html
+1.laravel crud generator
+
+2.laravel api document generator
+
+3.laravel menu
+
+
+
+
+//完成的laravel框架部分
+ps:框架的写作才能精华，避免了自我
+
+1.整个框架的流程， 核心部分的还需要加深理解容器的运用
+
+2.blade框架中前后端和连接
+    blade css div
+    https://laravel-china.org/topics/3260/laravel-53-and-how-to-collaborate-with-vue-components-easy-to-complete-the-front-end-work
+    http://blog.csdn.net/skykingf/article/details/49427263
+
+    ps:laravel内置了两套输出系统，直接输出和使用blade引擎编译后输出.
+
+
+3.登录和注册需要深入研究
+    加密和解密的地方
+    经过查看注册代码，bcrypt这个函数没有用系统自带的基础方法，而是用的laravel框架封装的方法。里面是通过password_hash()来生成密钥的。
+之后login函数中如何加密验证未能发现写作地方，最后方法可用debug模式进行文件的走向。或者安全中的加密和解密模块
+
+    AuthController/ LoginController -> login
+    login -> attemptLogin...即时登陆验证的具体内容，
+    attempt -> sessionGuard? 。。。最后的返回的意义？
+
+其中涉及到的token,session,cookie真正的区别所在。
+
+config/app.php别名和自己设置别名的写法区别
+
+
+4.邮件部分 如何发送附件
+    smtp.exmail.qq.com，端口25 。这是腾讯企业邮箱的服务器
+
+5.定义artisan console
+    先用命令生成，再在kernel.php中注册
+    console 中的handle用法
+    console 命令中带有参数如何写作
+    http://laravelacademy.org/post/3106.html
+
+6.php artisan tinker
+    tinker 它帮助我们更轻松的和我们的应用交流，而无需再不停地使用 dd() ? 和 die() ?
+    password如何转码 => cty('123456'); ps:加密样式是随记变化的，怎能保持你输入的密码就是最开始的加密字符匹配数据表。
+    tinker手动建立password没有被转码
+
+7.excel 导入和导出
+    excel中的通用性查询语句. 方式1:一条很庞大复杂的语句来求取所有用得上的数据，然后在求解不同
+    方法2：传入需要导出数据的关键字，Sql通过关键字限制查询。
+    方法3：这个思想不切实际，一旦新加功能，在不改动sql时能不能做出处理；在改动sql时，能不能保证其他的查询是否正确。
+
+8.图片滑动
+
+9.c++中 指针和引用，
+    对象 $this指针, self parent引用
+    const常量（运行时非配，程序运行过程中才有一份拷贝）和define宏定义（运行开始之前就分配 内存中存在若干拷贝）
+
+10.区块链
+
+11.本地环境如何开启logs/exception
+    https://laravel-china.org/topics/2530/the-highest-amount-of-downloads-of-the-100-laravel-extensions-recommended
+
+12.array_map:array
+  array_map ( callable $callback , array $array1 [, array $... ] )
+  返回数组，是为 array1 每个元素应用 callback函数之后的数组。 callback 函数形参的数量和传给 array_map() 数组数量，两者必须一样。
+  这个可以避免，传入数组多次循环的操作。
+
+13.erp中的单据流程分析
+    --已经明了，只是个别写法确实是感到简洁
+
+
+14.堆栈和队列的运用
+    堆栈可以用来完成数据元素序列的特定转换，队列可以用做数据元素序列的缓冲存储
+    array_push array_pop  array_shift
+
+15.laravel 自带的消息的使用
+
+16.php之道
+    https://laravel-china.github.io/php-the-right-way/
+
+17.php 反射机制reflection
+    php的反射特性可以提高写代码的设计质量。
+    反射机制--命名空间
+
+18.容器中注册时候，除了单例的绑定，其他类的绑定，对于全局变量的控制冲突？
+
+19.链表和树获取节点的比较，第三方代码库。
+
+20.lyyd common/reportTools.php的报表制作工具。
+        import/cmpskuimport.php的理解
+
+
+
+21.程序设计上的六大原则对应观看它的一些设计。
+
+22.其中的门面和容器这两个浏览了大概，
+    具体细节还难以理解。在哪个位置使用了反射
+
+    门面中的静态方法。
+    容器嘛？？？？
+
+
+23.源码中经常出现的regist, boot, handle, __construct中带有的参数， 这些运用的调用规则。
+
+24.根据validator设置新的验证规则。正则的复习
+    validator->after();也可以将之后的错误信息压入
+
+25.提高php的写作效率
+    http://www.cnblogs.com/wherein/p/6150632.html
+
+26.使用 gzcompress() 和gzuncompress()对容量大的字符串进行压缩(解压)在存进(取出)数据库时
+    这个压缩感觉不能与mysql一起使用？mysql string 似乎不能存入很特俗的符号
+
+
+27，composer
+    composer的本质是将github的代码下载到本地
+
+
+28.logs的封装和对外隐藏
+
+
+
+laravel-admin
+ps:缓存， 包缓存，路由缓存。配置文件需要重新运行识别。
+https://github.com/z-song/laravel-admin/issues/1044
+建议把//cdn.ckeditor.com/4.5.10/standard/ckeditor.js 这个文件弄到本地来，国内的网络加载这个js非常慢，导致后台出现卡死的情况
