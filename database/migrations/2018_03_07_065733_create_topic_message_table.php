@@ -16,7 +16,7 @@ class CreateTopicMessageTable extends Migration
         Schema::create('topic_message', function (Blueprint $table) {
             $table->increments('id');
             $table->text('topic'); //发表主题
-            $table->integer('use_id'); //发表用户
+            $table->integer('user_id'); //发表用户
             $table->timestamps();
             $table->softDeletes();
         });

@@ -53,7 +53,7 @@
                         for (var i = 0; i < result.data.length; i++) {
                             var opetion1 = document.createElement('option');
                             opetion1.text = result.data[i].name;
-                            opetion1.setAttribute("id", result.data[i].id);
+                            opetion1.setAttribute("value_id", result.data[i].id);
                             opetion1.setAttribute("value", result.data[i].name);
                             $("select#user_select").append(opetion1);
                         }
@@ -67,9 +67,18 @@
         $("#bth_2").click(function () {
             //上传数据
             //点击发表增加加载select数据等等上传？
-//            var id = $("select#user_select").val();
-
-//            console.log($("select#user_select").val());
+            var value = $("select#user_select").val();
+            var id = $("select#user_select").find("option:selected").attr("value_id");
+            var textarea = $("textarea").val();
+            $.ajax({
+                type: "post",
+                url: "/message",
+                data: {"user_id":id,"textarea":textarea},
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                }
+            });
         });
 
 
