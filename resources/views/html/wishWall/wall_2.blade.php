@@ -2,6 +2,19 @@
 
 @section('content')
 
+    <div class="panel panel-primary">
+        @foreach($dataList as $data)
+            <div class="panel-title">
+                {{$data->user->name}}
+            </div>
+        <div class="panel-body">
+            {{$data->topic}}
+
+        </div>
+        @endforeach
+    </div>
+
+    
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

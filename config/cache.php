@@ -42,6 +42,8 @@ return [
             'driver' => 'database',
             'table' => 'cache',
             'connection' => null,
+
+            //key, value, expiration
         ],
 
         'file' => [

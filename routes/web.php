@@ -63,6 +63,7 @@ Route::get('/refle', 'Admin\RefleController@index');
 //当产品完善之后， 可以使用路由缓存来减少路由注册有需要的时间。
 Route::get('/wall','HomeController@testIndex');
 Route::get('/img','HomeController@testImage');
+Route::get('/img2','HomeController@testImage2');
 
 
 //获取获取图片

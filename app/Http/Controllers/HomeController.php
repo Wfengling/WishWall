@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TopicMessage;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,11 +28,17 @@ class HomeController extends Controller
     }
 
     public function testIndex(){
-        return view('html.wishWall.wall_2');
+
+        $data = TopicMessage::with('user')->get();
+        return view('html.wishWall.wall_2')->with('dataList',$data);
     }
 
     public function testImage(){
         return view('html.wishWall.image');
     }
+
+    public function testImage2(){
+    return view('html.wishWall.image_2');
+}
 
 }

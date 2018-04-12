@@ -10,4 +10,15 @@ class TopicMessage extends Model
     use SoftDeletes;
 
     protected $table='topic_message';
+
+
+    protected $dates = ['deleted_at'];
+
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+
+
 }
