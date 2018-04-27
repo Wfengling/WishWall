@@ -69,5 +69,7 @@ Route::get('/img2','HomeController@testImage2');
 //获取获取图片
 Route::get('/imgAll','Admin\ImgController@getAllImg');
 Route::get('/userAll', 'Admin\UserController@getUserList');
+Route::get('/userTest', 'Admin\UserController@testUser');
+
 Route::resource('/message', 'Admin\MessageBoardController');
 
