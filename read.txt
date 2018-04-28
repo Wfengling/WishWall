@@ -162,3 +162,18 @@ https://github.com/z-song/laravel-admin/issues/1044
 
 1.抽奖
 2.寻路
+
+laravel-admin
+简单和h5 js php ajax的应用
+redis
+//@todo:
+workerMan : websocket聊天通信  网页游戏服务器  智能家电……
+swoole : 网上商城
+        半次元核心程序基于swoole+redis，使用swoole模拟map-reduce方案，在4核8G云主机单机查找/拼接/筛选千万级别用户时间轴动态，平均单次响应时间在60ms内。
+        社交app
+        直播平台 战旗 虎牙
+        yy语音
+        集运宝---物流整合
+        网络游戏 公司研发的《女王大人》手机游戏，后台程序全部基于PHP+Swoole+websocket，实现了TCP长连接，服务器推送。取代传统游戏慢速的Http方式。
+        Bilibili
+        百度订单中心

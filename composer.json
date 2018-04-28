@@ -11,7 +11,8 @@
         "laravel/tinker": "~1.0",
         "overtrue/laravel-lang": "~3.0",
         "predis/predis": "^1.1",
-        "rap2hpoutre/laravel-log-viewer": " ^0.5.2"
+        "rap2hpoutre/laravel-log-viewer": " ^0.5.2",
+        "workerman/workerman": "^3.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

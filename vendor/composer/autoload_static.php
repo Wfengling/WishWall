@@ -31,6 +31,7 @@ class ComposerStaticInitfd63ecffec98030d767387e54f00a512
         ),
         'W' => 
         array (
+            'Workerman\\' => 10,
             'Webmozart\\Assert\\' => 17,
         ),
         'T' => 
@@ -121,6 +122,10 @@ class ComposerStaticInitfd63ecffec98030d767387e54f00a512
         'XdgBaseDir\\' => 
         array (
             0 => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src',
+        ),
+        'Workerman\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/workerman/workerman',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -342,6 +347,7 @@ class ComposerStaticInitfd63ecffec98030d767387e54f00a512
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\Test\\AlgorithmController' => __DIR__ . '/../..' . '/app/Http/Controllers/Test/AlgorithmController.php',
+        'App\\Http\\Controllers\\Workman\\TestOneController' => __DIR__ . '/../..' . '/app/Http/Controllers/Workman/TestOneController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -372,6 +378,7 @@ class ComposerStaticInitfd63ecffec98030d767387e54f00a512
         'App\\Res\\Tree\\QueueOne' => __DIR__ . '/../..' . '/app/Res/Tree/QueueOne.php',
         'App\\Res\\Tree\\QuickSort' => __DIR__ . '/../..' . '/app/Res/Tree/QuickSort.php',
         'App\\Res\\Tree\\StackOne' => __DIR__ . '/../..' . '/app/Res/Tree/StackOne.php',
+        'App\\Res\\Worker\\ManOne' => __DIR__ . '/../..' . '/app/Res/Worker/ManOne.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
@@ -3983,6 +3990,32 @@ class ComposerStaticInitfd63ecffec98030d767387e54f00a512
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
+        'Workerman\\Autoloader' => __DIR__ . '/..' . '/workerman/workerman/Autoloader.php',
+        'Workerman\\Connection\\AsyncTcpConnection' => __DIR__ . '/..' . '/workerman/workerman/Connection/AsyncTcpConnection.php',
+        'Workerman\\Connection\\AsyncUdpConnection' => __DIR__ . '/..' . '/workerman/workerman/Connection/AsyncUdpConnection.php',
+        'Workerman\\Connection\\ConnectionInterface' => __DIR__ . '/..' . '/workerman/workerman/Connection/ConnectionInterface.php',
+        'Workerman\\Connection\\TcpConnection' => __DIR__ . '/..' . '/workerman/workerman/Connection/TcpConnection.php',
+        'Workerman\\Connection\\UdpConnection' => __DIR__ . '/..' . '/workerman/workerman/Connection/UdpConnection.php',
+        'Workerman\\Events\\Ev' => __DIR__ . '/..' . '/workerman/workerman/Events/Ev.php',
+        'Workerman\\Events\\Event' => __DIR__ . '/..' . '/workerman/workerman/Events/Event.php',
+        'Workerman\\Events\\EventInterface' => __DIR__ . '/..' . '/workerman/workerman/Events/EventInterface.php',
+        'Workerman\\Events\\Libevent' => __DIR__ . '/..' . '/workerman/workerman/Events/Libevent.php',
+        'Workerman\\Events\\React\\Base' => __DIR__ . '/..' . '/workerman/workerman/Events/React/Base.php',
+        'Workerman\\Events\\React\\ExtEventLoop' => __DIR__ . '/..' . '/workerman/workerman/Events/React/ExtEventLoop.php',
+        'Workerman\\Events\\React\\ExtLibEventLoop' => __DIR__ . '/..' . '/workerman/workerman/Events/React/ExtLibEventLoop.php',
+        'Workerman\\Events\\React\\StreamSelectLoop' => __DIR__ . '/..' . '/workerman/workerman/Events/React/StreamSelectLoop.php',
+        'Workerman\\Events\\Select' => __DIR__ . '/..' . '/workerman/workerman/Events/Select.php',
+        'Workerman\\Events\\Swoole' => __DIR__ . '/..' . '/workerman/workerman/Events/Swoole.php',
+        'Workerman\\Lib\\Timer' => __DIR__ . '/..' . '/workerman/workerman/Lib/Timer.php',
+        'Workerman\\Protocols\\Frame' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Frame.php',
+        'Workerman\\Protocols\\Http' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Http.php',
+        'Workerman\\Protocols\\HttpCache' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Http.php',
+        'Workerman\\Protocols\\ProtocolInterface' => __DIR__ . '/..' . '/workerman/workerman/Protocols/ProtocolInterface.php',
+        'Workerman\\Protocols\\Text' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Text.php',
+        'Workerman\\Protocols\\Websocket' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Websocket.php',
+        'Workerman\\Protocols\\Ws' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Ws.php',
+        'Workerman\\WebServer' => __DIR__ . '/..' . '/workerman/workerman/WebServer.php',
+        'Workerman\\Worker' => __DIR__ . '/..' . '/workerman/workerman/Worker.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',

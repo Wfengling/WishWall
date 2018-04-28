@@ -73,3 +73,13 @@ Route::get('/userTest', 'Admin\UserController@testUser');
 
 Route::resource('/message', 'Admin\MessageBoardController');
 
+
+
+
+
+
+
+//workMan
+Route::resource('/testOne', 'Workman\TestOneController');
+
+
