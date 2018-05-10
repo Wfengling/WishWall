@@ -39,7 +39,7 @@ class Workerman extends Command
     public function handle()
     {
         //
-        $ws = new Worker("websocket://127.0.0.1:2345");
+        $ws = new Worker("websocket://127.0.0.1:80");
 
         $ws->count = 4;
 

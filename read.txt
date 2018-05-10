@@ -106,6 +106,7 @@ config/app.php别名和自己设置别名的写法区别
 
 
 23.源码中经常出现的regist, boot, handle, __construct中带有的参数， 这些运用的调用规则。
+    中间键中handle继续向下传递原理
 
 24.根据validator设置新的验证规则。正则的复习
     validator->after();也可以将之后的错误信息压入
@@ -160,6 +161,8 @@ https://github.com/z-song/laravel-admin/issues/1044
 
 
 
+
+
 1.抽奖
 2.寻路
 
@@ -168,7 +171,11 @@ laravel-admin
 redis
 //@todo:
 workerMan : websocket聊天通信  网页游戏服务器  智能家电……
-swoole : 网上商城
+swoole :
+
+        ps:时刻注意编程细节，放置内存泄漏……
+
+        网上商城
         半次元核心程序基于swoole+redis，使用swoole模拟map-reduce方案，在4核8G云主机单机查找/拼接/筛选千万级别用户时间轴动态，平均单次响应时间在60ms内。
         社交app
         直播平台 战旗 虎牙

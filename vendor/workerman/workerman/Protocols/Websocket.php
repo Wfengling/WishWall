@@ -39,7 +39,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
     /**
      * Check the integrity of the package.
      *
-     * @param string              $buffer
+     * @param string $buffer
      * @param ConnectionInterface $connection
      * @return int
      */
@@ -65,11 +65,11 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
                 return 0;
             }
         } else {
-            $firstbyte    = ord($buffer[0]);
-            $secondbyte   = ord($buffer[1]);
-            $data_len     = $secondbyte & 127;
+            $firstbyte = ord($buffer[0]);
+            $secondbyte = ord($buffer[1]);
+            $data_len = $secondbyte & 127;
             $is_fin_frame = $firstbyte >> 7;
-            $masked       = $secondbyte >> 7;
+            $masked = $secondbyte >> 7;
 
             if (!$masked) {
                 echo "frame not masked\n";
@@ -77,7 +77,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
                 return 0;
             }
 
-            $opcode       = $firstbyte & 0xf;
+            $opcode = $firstbyte & 0xf;
             switch ($opcode) {
                 case 0x0:
                     break;
@@ -92,7 +92,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
                     // Try to emit onWebSocketClose callback.
                     if (isset($connection->onWebSocketClose) || isset($connection->worker->onWebSocketClose)) {
                         try {
-                            call_user_func(isset($connection->onWebSocketClose)?$connection->onWebSocketClose:$connection->worker->onWebSocketClose, $connection);
+                            call_user_func(isset($connection->onWebSocketClose) ? $connection->onWebSocketClose : $connection->worker->onWebSocketClose, $connection);
                         } catch (\Exception $e) {
                             Worker::log($e);
                             exit(250);
@@ -110,7 +110,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
                     // Try to emit onWebSocketPing callback.
                     if (isset($connection->onWebSocketPing) || isset($connection->worker->onWebSocketPing)) {
                         try {
-                            call_user_func(isset($connection->onWebSocketPing)?$connection->onWebSocketPing:$connection->worker->onWebSocketPing, $connection);
+                            call_user_func(isset($connection->onWebSocketPing) ? $connection->onWebSocketPing : $connection->worker->onWebSocketPing, $connection);
                         } catch (\Exception $e) {
                             Worker::log($e);
                             exit(250);
@@ -138,7 +138,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
                     // Try to emit onWebSocketPong callback.
                     if (isset($connection->onWebSocketPong) || isset($connection->worker->onWebSocketPong)) {
                         try {
-                            call_user_func(isset($connection->onWebSocketPong)?$connection->onWebSocketPong:$connection->worker->onWebSocketPong, $connection);
+                            call_user_func(isset($connection->onWebSocketPong) ? $connection->onWebSocketPong : $connection->worker->onWebSocketPong, $connection);
                         } catch (\Exception $e) {
                             Worker::log($e);
                             exit(250);
@@ -171,7 +171,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
                 if ($head_len > $recv_len) {
                     return 0;
                 }
-                $pack     = unpack('nn/ntotal_len', $buffer);
+                $pack = unpack('nn/ntotal_len', $buffer);
                 $data_len = $pack['total_len'];
             } else {
                 if ($data_len === 127) {
@@ -179,8 +179,8 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
                     if ($head_len > $recv_len) {
                         return 0;
                     }
-                    $arr      = unpack('n/N2c', $buffer);
-                    $data_len = $arr['c1']*4294967296 + $arr['c2'];
+                    $arr = unpack('n/N2c', $buffer);
+                    $data_len = $arr['c1'] * 4294967296 + $arr['c2'];
                 }
             }
             $current_frame_length = $head_len + $data_len;
@@ -209,7 +209,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
         elseif ($connection->websocketCurrentFrameLength < $recv_len) {
             static::decode(substr($buffer, 0, $connection->websocketCurrentFrameLength), $connection);
             $connection->consumeRecvBuffer($connection->websocketCurrentFrameLength);
-            $current_frame_length                    = $connection->websocketCurrentFrameLength;
+            $current_frame_length = $connection->websocketCurrentFrameLength;
             $connection->websocketCurrentFrameLength = 0;
             // Continue to read next frame.
             return static::input(substr($buffer, $current_frame_length), $connection);
@@ -222,7 +222,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
     /**
      * Websocket encode.
      *
-     * @param string              $buffer
+     * @param string $buffer
      * @param ConnectionInterface $connection
      * @return string
      */
@@ -294,7 +294,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
     /**
      * Websocket decode.
      *
-     * @param string              $buffer
+     * @param string $buffer
      * @param ConnectionInterface $connection
      * @return string
      */
@@ -304,14 +304,14 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
         $len = ord($buffer[1]) & 127;
         if ($len === 126) {
             $masks = substr($buffer, 4, 4);
-            $data  = substr($buffer, 8);
+            $data = substr($buffer, 8);
         } else {
             if ($len === 127) {
                 $masks = substr($buffer, 10, 4);
-                $data  = substr($buffer, 14);
+                $data = substr($buffer, 14);
             } else {
                 $masks = substr($buffer, 2, 4);
-                $data  = substr($buffer, 6);
+                $data = substr($buffer, 6);
             }
         }
         for ($index = 0; $index < strlen($data); $index++) {
@@ -322,7 +322,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
             return $connection->websocketDataBuffer;
         } else {
             if ($connection->websocketDataBuffer !== '') {
-                $decoded                         = $connection->websocketDataBuffer . $decoded;
+                $decoded = $connection->websocketDataBuffer . $decoded;
                 $connection->websocketDataBuffer = '';
             }
             return $decoded;
@@ -332,7 +332,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
     /**
      * Websocket handshake.
      *
-     * @param string                              $buffer
+     * @param string $buffer
      * @param \Workerman\Connection\TcpConnection $connection
      * @return int
      */
@@ -386,7 +386,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
             if (isset($connection->onWebSocketConnect) || isset($connection->worker->onWebSocketConnect)) {
                 static::parseHttpHeader($buffer);
                 try {
-                    call_user_func(isset($connection->onWebSocketConnect)?$connection->onWebSocketConnect:$connection->worker->onWebSocketConnect, $connection, $buffer);
+                    call_user_func(isset($connection->onWebSocketConnect) ? $connection->onWebSocketConnect : $connection->worker->onWebSocketConnect, $connection, $buffer);
                 } catch (\Exception $e) {
                     Worker::log($e);
                     exit(250);
@@ -400,7 +400,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
                 $_GET = $_SERVER = $_SESSION = $_COOKIE = array();
 
                 if (isset($connection->headers)) {
-                    if (is_array($connection->headers))  {
+                    if (is_array($connection->headers)) {
                         foreach ($connection->headers as $header) {
                             if (strpos($header, 'Server:') === 0) {
                                 $has_server_header = true;
@@ -413,7 +413,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
                 }
             }
             if (!$has_server_header) {
-                $handshake_message .= "Server: workerman/".Worker::VERSION."\r\n";
+                $handshake_message .= "Server: workerman/" . Worker::VERSION . "\r\n";
             }
             $handshake_message .= "\r\n";
             // Send handshake response.
@@ -452,7 +452,7 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
     protected static function parseHttpHeader($buffer)
     {
         // Parse headers.
-        list($http_header, ) = explode("\r\n\r\n", $buffer, 2);
+        list($http_header,) = explode("\r\n\r\n", $buffer, 2);
         $header_data = explode("\r\n", $http_header);
 
         if ($_SERVER) {
@@ -468,14 +468,14 @@ class Websocket implements \Workerman\Protocols\ProtocolInterface
             if (empty($content)) {
                 continue;
             }
-            list($key, $value)       = explode(':', $content, 2);
-            $key                     = str_replace('-', '_', strtoupper($key));
-            $value                   = trim($value);
+            list($key, $value) = explode(':', $content, 2);
+            $key = str_replace('-', '_', strtoupper($key));
+            $value = trim($value);
             $_SERVER['HTTP_' . $key] = $value;
             switch ($key) {
                 // HTTP_HOST
                 case 'HOST':
-                    $tmp                    = explode(':', $value);
+                    $tmp = explode(':', $value);
                     $_SERVER['SERVER_NAME'] = $tmp[0];
                     if (isset($tmp[1])) {
                         $_SERVER['SERVER_PORT'] = $tmp[1];
