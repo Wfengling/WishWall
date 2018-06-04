@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{--//jquery是为了方便开始下载的--}}
     <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
