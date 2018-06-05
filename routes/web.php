@@ -61,7 +61,17 @@ Route::get('/refle', 'Admin\RefleController@index');
 //自定义资源路径
 //如果必须要在资源控制器里添加额外的路由，需要在调用 Route::resource 之前去定义它们：
 //当产品完善之后， 可以使用路由缓存来减少路由注册有需要的时间。
-Route::get('/wall','HomeController@testIndex');
+
+//wall
+Route::get('/wall','HomeController@testIndex'); //message首页
+Route::get('/wallMessage', 'HomeController@getWallMessage'); //获取message list
+
+
+
+
+
+
+
 Route::get('/img','HomeController@testImage');
 Route::get('/img2','HomeController@testImage2');
 

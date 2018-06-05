@@ -29,9 +29,18 @@ class HomeController extends Controller
 
     public function testIndex(){
 
-        $data = TopicMessage::with('user')->get();
-        return view('html.wishWall.wall_2')->with('dataList',$data);
+        //直接这么传递数据不能进行页面的刷新
+//        $data = TopicMessage::with('user')->get();
+//        return view('html.wishWall.wall_2')->with('dataList',$data);
+        return view('html.wishWall.wall_2');
     }
+
+    public function getWallMessage(){
+        $rt  = ['status'=>200, 'msg'=>'', 'data'=>(object)[]];
+        $rt['data'] = TopicMessage::with('user')->get();
+        return response()->json($rt);
+    }
+
 
     public function testImage(){
         return view('html.wishWall.image');
