@@ -65,8 +65,6 @@
     {{--留言板列表显示--}}
     {{--留言板提交之后 刷新问题--}}
     <div class="panel panel-primary">
-        <div class="panel-title"></div>
-        <div class="panel-body"></div>
         {{--@foreach($dataList as $data)--}}
             {{--<div class="panel-title">--}}
                 {{--{{$data->user->name}}--}}
@@ -128,6 +126,7 @@
                 success: function (result) {
                     console.log(result);
 //                    window.location.reload(); //页面的整体刷新比较浪费资源
+                    $(".panel-primary").reload();
                 }
             });
         });
@@ -141,16 +140,24 @@
                 dataType : "json",
                 success: function (result) {
                     if (result.status == 200) {
-//                        var dataArr = json.parse(result.data.json);
-//                        console.log(result.data);
                         for (var i=0; i<result.data.length;i++) {
-                            console.log(result.data[i].user.name);
-                            var panelTitle = document.createElement("panel-title");
-                            var panelBody = document.createElement("panel-body");
-                            panelTitle.text = result.data[i].user.name;
-                            panelBody.text = result.data[i].topic;
-//                            $("panel panel-primar").append(panelTitle);
-//                            $("panel panel-primar").append(panelBody);
+                            var panelTitle = document.createElement('div');
+                            var panelBody = document.createElement('div');
+                            panelTitle.innerHTML = result.data[i].user.name;
+                            panelBody.innerHTML = result.data[i].topic;
+                            panelTitle.setAttribute('class', 'panel-title');
+                            panelBody.setAttribute('class', 'panel-body');
+                            $(".panel-primary").append(panelTitle);
+                            $(".panel-primary").append(panelBody);
+
+
+//                            var panelTitle = document.getElementsByName("panel-title"); //会获取所有循环出class的值。
+//                            var panelBody = document.getElementsByName("panel-body");
+//                            console.log(panelTitle);
+//                            panelTitle.text = ;
+//                            panelBody.text = result.data[i].topic;
+//                            $(".panel-primary").append(panelTitle);
+//                            $(".panel-primary").append(panelBody);
                         }
                     }
                 }
