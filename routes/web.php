@@ -64,8 +64,7 @@ Route::get('/refle', 'Admin\RefleController@index');
 
 //wall
 Route::get('/wall','HomeController@testIndex'); //message首页
-Route::get('/wallMessage', 'HomeController@getWallMessage'); //获取message list
-
+Route::resource('/message', 'Admin\MessageBoardController');
 
 
 
@@ -81,7 +80,6 @@ Route::get('/imgAll','Admin\ImgController@getAllImg');
 Route::get('/userAll', 'Admin\UserController@getUserList');
 Route::get('/userTest', 'Admin\UserController@testUser');
 
-Route::resource('/message', 'Admin\MessageBoardController');
 
 
 

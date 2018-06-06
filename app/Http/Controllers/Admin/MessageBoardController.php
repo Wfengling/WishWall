@@ -16,13 +16,21 @@ class MessageBoardController extends Controller
 
     public function index(){
 
-        $data = TopicMessage::all();
-
+        $rt  = ['status'=>200, 'msg'=>'', 'data'=>(object)[]];
+        $rt['data'] = TopicMessage::with('user')
+            ->orderBy('id', 'DESC')
+            ->get();
+        return response()->json($rt);
 
     }
 
 
 
+    public function destroy($id){
+        $rt  = ['status'=>200, 'msg'=>'', 'data'=>null];
+        TopicMessage::destroy([$id]);
+        return response()->json($rt);
+    }
 
 
 

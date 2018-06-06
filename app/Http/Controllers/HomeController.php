@@ -35,11 +35,6 @@ class HomeController extends Controller
         return view('html.wishWall.wall_2');
     }
 
-    public function getWallMessage(){
-        $rt  = ['status'=>200, 'msg'=>'', 'data'=>(object)[]];
-        $rt['data'] = TopicMessage::with('user')->get();
-        return response()->json($rt);
-    }
 
 
     public function testImage(){
